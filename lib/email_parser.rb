@@ -15,14 +15,7 @@ end
 def parse
 
   emails = @email_addresses.split(/[, ]/)
-  #emails_white_space_removed = emails.map { |item| item.strip  }
-  #emails_white_space_removed.each_with_index do |email, index|
-  #  count = emails_white_space_removed.count(email)
-    #if count >= 2
-    #  emails_white_space_removed.delete_at(index)
-    #end
-  #end
-  emails.each_with_index do |email, index|
+  ith_index do |email, index|
 
     count = emails.count(email)
 
