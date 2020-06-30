@@ -3,15 +3,54 @@
 # unique email addresses. The delimiters to support are commas (',')
 
 
-class EmailParser
-attr_accessor :emails
+class EmailAddressParser
+attr_accessor :parse
 
-def initialize(email)
-  @emails = email
+
+
+def initialize(email_addresses)
+  @email_addresses = email_addresses.strip
 end
 
 def parse
-  emails.delete(',').split.uniq
+
+  emails = @email_addresses.split(/[, ]/)
+  #emails_white_space_removed = emails.map { |item| item.strip  }
+  #emails_white_space_removed.each_with_index do |email, index|
+  #  count = emails_white_space_removed.count(email)
+    #if count >= 2
+    #  emails_white_space_removed.delete_at(index)
+    #end
+  #end
+  emails.each_with_index do |email, index|
+
+    count = emails.count(email)
+
+    if count >= 2
+     emails.delete_at(index)
+
+
+   elsif email.empty?
+      emails.delete_at(index)
+
+    end
+  end
+
+
+  emails.each_with_index do |email, index|
+
+    if email.empty?
+      emails.delete_at(index)
+    end
+
+  end
 end
 
-end 
+
+
+
+
+
+
+
+end
